@@ -1,0 +1,629 @@
+PlanAni 0.51 
+Programming interface version 0.1 
+    
+15.8.2003
+Ville Rapa
+
+
+This document describes PlanAni's programming interface. All operations can
+be found from file ANInterface.tcl. ANInterface uses ANFunctions.tcl file and GBI libraries, 
+which can be found from GBI directory if needed. PlanAni also includes some
+example programs.
+
+Table of contents
+
+1. Introduction
+
+2. General Operations
+    
+    2.1 AN_beginAnimation
+    2.2 AN_endAnimation
+    2.3 AN_delay
+    2.4 AN_notice
+    2.5 AN_write
+    2.6 AN_writeln
+ 
+3. Operations for all roles of variable
+    
+    3.1 AN_createVar
+    3.2 AN_setNewValue
+    3.3 AN_readData
+    3.4 AN_reStart
+    3.5 AN_compare
+    3.6 AN_properChange
+    3.7 AN_sporadicChange
+    3.8 AN_getAttribute
+    3.9 AN_getAll
+    3.10 AN_setAttribute
+    3.11 AN_deleteAttributes
+    3.12 AN_destroyVariable
+	
+4. Role specific Operations and attributes
+    4.1 Fixed value (CONS)
+    4.2 Organiser (ORGA)
+    4.3 Stepper (STEP)
+    4.4 Most-recent holder (MRH)
+    4.5 Gatherer (GATH)
+    4.6 Most-wanted holder (MWH)
+    4.7 One-way flag (OWF)
+    4.8 Follower (FOLL)
+    4.9 Temporary (TEMP)
+    4.10 Other (OTHE)
+
+	
+1. Introduction
+
+PlanAni is implemented using tcl/tk, so all operations are used just like any
+of the build-in commands. All operations needed to animate novice programs are 
+included to this document.  First chapter describes operations which effects
+on animation controlflow or have nothing to do with variables. Second chapter 
+introduces operations common to all roles of variables. Last chapter describes 
+role specific operations and attributes.  
+
+
+2. General Operations
+
+    2.1 beginAnimation
+		
+        BeginAnimation must be used after creating programs source lines. It stops
+        animation and waits user interaction. 
+        Tcl specification is:
+
+		    beginAnimation
+	
+    2.1 endAnimation
+		
+        EndAnimation notifies PlanAni than animation has ended and goes to
+        beginning of animation. Beginning of the animation means place of
+        method beginAnimation.
+        Tcl specification is:
+			
+            endAnimation
+		
+    2.3 AN_delay
+		
+        Delays animation. Time delayed depends on animation speed. 
+		Tcl specification is:
+			
+			AN_delay
+			
+    2.4 notice
+	
+        show messagebox with given action message and flashes peace of source code.
+        Action messages can be found from file start.tcl.
+        Form of the message is:
+
+            notice action {coords null}
+
+        Argument ACTION indicates message which will be show in the
+        messagebox.
+        Argument COORD is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area, creates arrow from marked text to
+        variable and blinks the mark area. This is optional.
+		
+    2.5 AN_write
+    
+        Writes text to PlanAni's output. Can mark specified source code and show event if needed.
+        Tcl specification is:
+            
+            AN_write { text {coords no} {notice null} }
+            
+        The parameter TEXT is text to be written to the PlanAni's output.
+        The parameter COORDS is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area. Use value no if a NOTICE parameter gets some value,
+        but COORDS don't.
+        The parameter NOTICE is a text in the dialog box.
+        
+    2.6 AN_writeln
+        
+        Tcl specification is:
+        
+            AN_writeln { text {coords no} {extra null} {notice null} {newline 1} }
+           
+        The parameter TEXT is text to be written to the PlanAni's output.
+        The parameter COORDS is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area. Use value no if a NOTICE parameter gets some value,
+        but COORDS don't.
+        The parameter EXTRA creates arrow and text to output which clarifies the written text.
+        The parameter NEWLINE indicates that newline character is written to the end of line.
+        If equal to 1 then newline char is written otherwise not.
+        The parameter NOTICE is a text in the opened dialog box. 
+        
+
+3 Functions for all roles.
+
+    This section describes methods functions common for every roles, which PlanAni
+    0.51 support. All roles has tree common attribute: name, value and role. Name
+    is name of the variable, role is abbreviation of role and value is the resent
+    value assign to variable. Value can also be empty.
+
+    3.1 AN_createVar
+	
+        The AN_createVar operation creates variable of some role and returns
+        identifier of created variable. Returned identifier is created by PlanAni
+        and has nothing to do with tk tag or identifier.
+
+        Tcl specification is:
+		
+            AN_createvar { name role mark type {coords} {value} {length} }
+		
+        The NAME is a name of the variable, which can be any valid tcl string.
+	    Role argument is abbreviation of role. Possible role abbreviations
+	    are: CONS, STEP, FOLL, MRH, GATH, OWF, TEMP, MWH, OTHE.  
+		
+        CONS  = Constant
+        STEP = Stepper
+        FOLL = Follower
+        MRH = most-recent-holder 
+        GATH = Gatherer
+        OWF = One-way flag
+        TEMP = Temporary
+        MWH = Most-wanted holder
+        OTHE = Other
+		
+        The MARK is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area, creates arrow from marked text to
+        variable and blinks the mark area.
+        The TYPE argument is abbreviation of the variables type. Valid values
+        ale: INT, CHAR, BOOL, REAL, CONST
+        The COORDS argument is a list of x and y coords of point where variable
+        will be created.
+        The VALUE argument is initial value of variable.
+        The LENGTH specifies the number of elements in the array. This is used to
+        create array variable of all roles.
+		
+		
+	
+    3.2 AN_setNewValue
+	
+        The AN_setNewValue command sets new value to the variable.
+        Tcl specification is:
+				
+            AN_setNewValue { varId value {mark null} {txt _null_} {hs 1} }
+					
+        The VARID is identifier of variable.
+        Identifier is return value of AN_createVar command.
+        The VALUE is new value 
+        The MARK is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area, creates arrow from marked text to
+        variable and blinks the mark area.
+        The TXT parameter is text that is used when variables value is updated
+        and new value depends on same expression. shows expression text and
+        arrow pointing to new value.
+        The HS parameter is the hotspot where new value will be placed. Usually
+        not needed.
+		
+
+    3.3 AN_readData
+
+        Reads a value and animates its transfer to the appropriate role image.
+        Tcl specification is:
+    
+            AN_readData {varId coords {notice "null"} {index _null_} }
+
+        The VARID is identifier of variable.
+        The COORDS is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area, creates arrow from marked text to
+        variable and blinks the mark area.
+        NOTICE is type of event text shown in the event text box. possible
+        values can be found from start.tcl file. 
+        
+        
+    3.4 AN_reStart
+
+        Not implemented yet.
+
+
+    3.5 AN_compare
+
+        Animate comparison of roles. Comparison is different depending on role and
+        therefor there is different amount of parameters passed to method
+        depending on role.
+	
+	    Tcl specification is:
+		
+            AN_compare { coords {type WHILE} args }
+
+	
+        The COORDS is list containing line number, index of start char and index of
+        end char. If mark is specified then first action will be marking the
+        source code at the specified area, creates arrow from marked text to
+        variable and blinks the mark area.
+        The TYPE is type of control structure where comparison occurs: loop, if or
+        basic. Basic does not make any kind of notice after animation.
+        ARGS parameter is list of parameters which will be evaluated and passed
+        forward to function depending on role.
+        ARGS parameter for different roles are:
+        
+        Stepper
+            { varId coords {type NULL} }
+            
+        Owf
+            {varId mark {type IF} {not 0}}
+            
+        All other roles except arrays 
+            {varId sign target coords {type "LOOP"} {elseCoords null} {notice null} }
+    
+        The SIGN could be: <,>,>=,<=,!= or ==. This is same as in compare 
+        expression.
+        The SIGN2 could have same values as SIGN and is used to same purpose.
+        The TARGET parameter is value where variables (varId) is compared to.
+        TARGET2 is used for same purpose, but in more complex comparison.
+        COMPTYPE is boolean operator: or, and
+        ElSECOORDS highlights else part if necessary. Values are same type than
+        in case COORS parameter.
+        COLOR parameter is no longer used, but it's still there because of
+        portability to older version.
+	
+        This operation is pretty nasty and I suggest to examine examples, which 
+        are included in PlanAni. 
+
+    3.6 AN_properChange
+
+        The AN_properChange procedure changes role of the variable. Variables value 
+        remains after transformation.
+        Tcl specification is:
+	
+            AN_properChange { varId newRole } 
+	
+        The VARID is identifier of variable.
+        The NEWROLE argument is abbreviation of new role. Section 3.1 contains
+        list of valid newRole values.
+	
+
+    3.7 AN_sporadicChange
+	
+        The AN_sporadicChange procedure changes role of the variable, so that
+        variable acts like it was just created. All attributes of the variable are
+        replaced by default values.
+    
+        Tcl specification is:
+	
+            AN_sporadicChange { varId newRole }
+		
+        The VARID is identifier of variable.
+        The NEWROLE argument is abbreviation of new role. Section 3.1 contains
+        list of valid newRole values.
+
+
+    3.8 AN_getAttribute
+	
+        AN_getAttribute returns value of wanted attribute.
+        Tcl specification is:
+		
+            AN_getAttribute varId {attribute null}
+		
+        The VARID is identifier of variable.
+        The ATTRIBUTE is name of the wanted attribute. This argument is optional
+        and if it's not specified then method returns list of pairs containing
+        attribute name and attribute value pair.
+	
+	
+    3.9 AN_getAll
+	
+        AN_getAll method returns all variables attributes. In case of error return
+        value is -1.
+        Tcl specification is:
+
+            AN_getAll { varId }
+
+        The VARID is identifier of variable.
+
+
+    3.10 AN_setAttribute
+
+        AN_setAttribute sets value to variables attribute.
+        Tcl specification is:
+		
+            AN_setAttribute { varId attribute value }
+		
+        The VARID is identifier of variable.
+        The ATTRIBUTE is name of the attribute where value is set.
+        The VALUE is a new value of attribute called ATTRIBUTE.
+	
+	
+    3.11 AN_deleteAttributes
+	
+        AN_deleteAttributes deletes all variables attributes. 
+        Tcl specification is:
+
+	        AN_deleteAttributes  varId 
+
+        The VARID is identifier of variable, whose attributes will be deleted.
+	
+
+
+    3.12 AN_destroyVariable
+	
+	    (ALL FUCTIONALITY NOT IPLEMENTED)
+        AN_destroyVariable destroys variable and all it's resources.  
+        Tcl specification is:
+
+	        AN_destroyVariable varId
+
+        The VARID is identifier of variable, which will be destroyed.
+
+
+4 Role specific attributes and operations:
+    	
+    4.1 Fixed value (CONS)
+    
+        attributes:
+    
+        -unCorrValue
+            Original value which has been replaced with operation
+            AN_setCorrValue. 
+		
+        Operation:
+    
+        -AN_setCorrValue
+            Set corrected value to variable and update unCorrValue
+            attribute.
+            
+            Tcl specification is:
+                
+                varId newValue {mark null} {txt _null_}
+
+            The VARID is identifier of variable.
+            Parameter NEWVALUE is new value of the variable.
+            Parameter MARK is list containing line number, index of 
+            start char and index of end char. If mark is specified 
+            then first action will be marking the source code at the 
+            specified area, creates arrow from marked text to variable 
+            and blinks the mark area. 
+            
+    4.2 Organiser (ORGA)
+    
+        Attributes:
+		    
+            --
+            
+        Operations:
+		
+        -swap
+            Swaps two elements using temporary variable.
+            Tcl specification is:
+            
+                swap { varId from to tempVarId }
+
+            Parameter FROM and TO are indexes of elements which will be
+            swapped. 
+            TEMPVARID is handle to variable which will be used in
+            rearranging values of VARID variable. If role of variable
+            TEMPVARID is not temporary then sporadic role change to 
+            role temporary will happen.
+    
+    4.3 Stepper (STEP)
+    
+        Attributes:
+	
+		-direction
+			Direction of next step. Either left or right.	
+			
+		-expression
+			Expression, where @-sign is replaced by current value of
+			variable and then calculated new value using expr command.
+			Example expressions: @+1, @+2 and @-1.
+		
+		-limitExpression
+			Statement which can be used to calculate all possible values.
+
+		-limitValue
+        
+		-comparison	
+        
+        Operations:	
+	
+        -AN_step 
+            Goes to the next value depending on previous value and expression
+            attribute.
+            Tcl specification is:
+                
+                 AN_step {varId coords }
+
+            The VARID is identifier of variable.
+            The COORDS is list containing line number, index of start char and 
+            index of end char. If mark is specified then first action will be 
+            marking the source code at the specified area, creates arrow from 
+            marked text to variable and blinks the mark area. 
+			
+        -AN_setLim
+			sets attributes comparison, limitValue and limitExpression.
+            Tcl specification is:
+            
+                AN_setLim { varId cmp { limExp null } {lim null } }
+                
+            The VARID is identifier of variable.
+            Parameter CMP new value to attribute comparison.
+            Parameter LIMEXP is new value of attribute comparison
+            Parameter LIM is new value of attribute limitValue.
+            
+        -AN_setExpression
+            sets attribute expression
+            Tcl specification is:
+                
+                AN_setExpression { varId exp }
+                
+            The VARID is identifier of variable.
+            Parameter EXP is expression where sign @ will be replaced with
+            value of variable. Expression must be valid tcl math
+            expression.
+            
+        -AN_setDirection
+            set attribute direction. Valid values are left or right. Arrow
+            indicating direction in the picture will show up.
+            Tcl specification is:
+                
+                AN_setDirection { varId dir }
+
+            The VARID is identifier of variable.
+            Parameter DIR is new direction. [left|rigth|LEFT|RIGTH]
+            
+    4.4 Most-recent holder (MRH)
+    
+        Role Most-recent holder doesn't have any special operations. To get value of
+        prevValue attribute use AN_getAttribute operation. Attribute prevValue is set
+        when there is a value when assigning a new value.
+        
+        Attributes:
+    
+	        -prevValue
+			    previous value of the variable.
+            
+        Operations:
+		--
+        
+    4.5 Gatherer (GATH)
+
+            Role Gatherer doesn't have any special operations. To get value of
+            prevValue attribute use AN_getAttribute operation. Attribute prevValue is set
+            when there is a value when assigning a new value.
+
+    Attributes:
+    
+		-prevValue
+            previous value of the variable.
+            
+    Operations:
+		--
+
+    4.6 Most-wanted holder (MWH)
+        
+        Role Most-wanted holder doesn't have any special operations. To get value of
+        prevValue attribute use AN_getAttribute operation. Attribute prevValue is set
+        when there is a value when assigning a new value.
+            
+        Attributes:
+	
+		-prevValue
+			Previous value of variable. 
+			
+    Operations:
+		
+        --
+	
+    4.7 One-way flag (OWF)
+    
+        Attributes:
+    
+		-direction 
+			One-way flag is a two-valued variable and direction depends on
+			initial value. If first value is true then direction is true to
+			false otherwise false to true. This attribute indicates direction
+			and possible values are true or false. If value of attribute is
+			true then direction is true to false and vice versa.
+        
+        Operations:
+    
+        -change
+		    Changes variables value depending on direction and new value. Value can be
+		    changed only ones.
+		    Tcl specification is:
+		        
+                AN_change { varId {value _null_} {coords null} {doThis _null_}}
+				
+		    The VARID is identifier of variable.
+            Value is new value of variable.
+            The COORDS is list containing line number, index of start char and 
+            index of end char. If mark is specified then first action will be 
+            marking the source code at the specified area, creates arrow from 
+            marked text to variable and blinks the mark area.
+            DOTHIS is variable that will be evaluated with eval command. The
+            result value of evaluation, must be 0 or 1. This variable can be
+            list on other operations that is used to form newValue of this
+            variable.
+            
+        
+    4.8 Follower (FOLL)
+    
+        Attributes:
+    
+		-Variable
+			Variable to follow.
+        Operations:
+    
+	    -AN_setVariable
+			sets value attribute Variable.
+            Tcl specification is:
+            
+                AN_setVariable {varId varToFollow}
+
+            The VARID is identifier of follower variable.
+            The varToFollow is variable which will be followed.
+            
+        -Follow
+        	Follows variable identified by attribute variable. Sets new value from followed
+			variable.
+            
+            Tcl specification is:
+
+                follow { varId coords}
+
+            The VARID is identifier of variable.
+            The COORDS is list containing line number, index of start char and 
+            index of end char. If mark is specified then first action will be 
+            marking the source code at the specified area, creates arrow from 
+            marked text to variable and blinks the mark area. 
+			
+
+    4.9 Temporary (TEMP)
+    
+        Attributes:
+	
+		-variable
+            Identifier of variable, which value is hold temporarily in this
+            variable.
+			 
+		-state
+			indicates the state of variable. On means active and off means
+			passive.
+			
+        Operations:
+    
+		-AN_setVariable
+			sets value to attribute Variable.
+            Tcl specification is:
+            
+                AN_setVariable {varId varToFollow}
+
+            The VARID is identifier of follower variable.
+            The varToFollow is variable which will use this variable as
+            a temporary container.
+						
+        -AN_setState
+			Set new state to variable. State can be active or passive.
+            When state changes from passive to active variable gets new
+            value from source variable. 
+			Tcl specification is:
+            
+				AN_setState  varId {state on} {coords null} {index _null_}
+				
+				VARID handle of temporary variable.
+				STATE is new state to Variable Is either on or off.
+				The COORDS is list containing line number, index of start 
+				char and index of end char. If mark is specified then first 
+				action will be marking the source code at the specified area, 
+				creates arrow from marked text to variable and blinks the 
+				mark area.
+				INDEX indicates index of array variable.
+
+    4.10 Other (OTHE)
+
+        Role Other does not have any special attributes or operations.    
+        
+        Attributes:
+		    
+            --
+            
+        Operations:
+		    
+            --
+
+
+

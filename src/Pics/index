@@ -1,0 +1,7 @@
+FadeIn/ 			All basic pictures + fade  animations
+GATH-ORGA/			Role change from gatherer to organizer
+index				This file.
+input.gif			Active input field picture. Used when aser must give input.
+inputpas.gif		Passive input field picture. Used when input field is not active. 
+MRH-STEP/			Role change from most-resent holder to stepper
+output.gif			backround picture for outputs. 

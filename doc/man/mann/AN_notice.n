@@ -1,0 +1,40 @@
+.TH AN_notice n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_notice \- Creates tk_messageBox with string formed from
+abbrevation.
+
+.SH SYNOPSIS
+\fBAN_notice \fIaction ?coords?\fR
+.SH DESCRIPTION
+.PP
+Forms message string depending on \fIaction\fR and used language. If
+parameter \fIcoords\fR is given or different than "null" source code
+at the position of \fIcoords\fR is flashed. After that \ftk_messageBox\fR
+is created with message formed before.
+
+.SH PARAMETERS
+
+.IP "\fIaction\fR"
+\fIAction\fR is a part of the key at the messages table. The other part of
+the key is language identifier. Messages table can be found from file
+\fIANFunctions.tcl\fR.
+
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+
+.SH RETURN VALUE
+None.
+
+.SH EXAMPLES
+.br
+AN_notice IF_FALSE
+.br
+AN_notice LOOP_ENDS {16 start 6}
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

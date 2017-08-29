@@ -1,0 +1,60 @@
+.TH AN_createVar n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_createVar \- Creates a variable
+
+.SH SYNOPSIS
+\fBAN_createVar \fIname role type ?coords? ?value? ?length?\fR
+.SH DESCRIPTION
+.PP
+The AN_createVar command creates a variable and returns a handle to the
+created variable. The \fIname\fR is the name of the variable, which can 
+be any valid tcl-string. The \fIrole\fR is abbreviation of the 
+variable's role. Possible role abbreviations are: CONS, STEP, FOLL, MRH, GATH, 
+OWF, TEMP, MWH and OTHE. The \fImark\fR is a list containing line number,
+index of start character and index of end character specifying mark
+area from source code. The \fItype\fR argument is abbreviation of the variables type. 
+Valid values ale: INT, CHAR, BOOL, REAL and CONST. The \fIcoords\fR argument is 
+a list of x- and y-coords of the point where variable will be created. The 
+\fIvalue\fR argument is initial value of variable. The \fIlength\fR specifies the 
+number of elements in the array. The \fIlength\fR is used to create an
+array variable.
+.PP                 
+The \fIrole\fR abbreviations and roles:
+        CONS  = Constant
+        STEP = Stepper
+        FOLL = Follower
+        MRH = Most-resent-holder
+        GATH = Gatherer
+        OWF = One-way flag
+        TEMP = Temporary
+        MWH = Most-wanted holder
+        OTHE = Other
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable
+.IP "\fIrole\fR"
+An abbreviation of the role
+.IP "\fItype\fR"
+A type of the variable (int, bool, real)
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+.IP "\fIvalue\fR"
+A initial value of the variable
+.IP "\fIlength\fR"
+Length of the array variable.
+
+.SH RETURN VALUE
+A NULL is returned if an error occurs.  Otherwise the return value is
+a descriptor referencing the created variable.
+.SH EXAMPLES
+AN_createVar temp TEMP int {2 1 7} 10 
+.SH SEE ALSO
+AN_destroyVariable(n) PlanAni(1)
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

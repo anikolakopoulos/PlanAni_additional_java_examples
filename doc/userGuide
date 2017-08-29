@@ -1,0 +1,277 @@
+User Guide 
+Ville Rapa
+Thu Nov 20 15:09:58 EET 2003 version 1.0
+
+
+Table of Contents
+
+	1. Introduction
+	2. Example template
+	3. Source code
+	4. Creating Animation
+		4.1 Creating a variables
+		4.2 Assignment stament
+		4.3 Comparison statement
+		4.4 Input/Output
+	5. Test an example
+	6. Example sum.tcl
+	7. Man pages
+
+
+This document is aimed at person how wants to create own animations
+for planAni version 0.52. It does not, however, explain all
+functionality of all operations of planAni. Document contains short
+instructions how to create simple animation using planAni's
+programmer interface.
+
+To include animation script to planAni is easy, just create a file to
+Examples directory, which root name is exactly the same than script
+and the file extension is .tcl. PlanAni searches animation scripts
+from Examples directory under the planAni's installation directory
+and automatically loads them at the beginning of execution. After
+that launcher of the script can be found from file menu
+(file->examples). Animation script is basically normal tcl procedure,
+so that only one animation procedure can be in one file. This
+limitation is because planAni creates link to file menu based on .tcl
+files on Example directory. for example, if animation script file
+name is HelloWorld.tcl then the procedure must be named as
+HelloWorld.
+
+		/ .. /PlanAni/Examples/HelloWorld.tcl
+
+		content of file:
+
+			proc HelloWorld { } {
+
+			}
+
+Inside animation procedure one can determine two parts: creation of
+source codetext and program animation parts. Source codetext can be
+created with command AN_createProgramLine. For example
+
+                          __ Line number
+                         |  __ Indent
+                         | |       __ source code text
+                         | |      |
+    AN_createProgramLine 1 1 "program helloWorld (input, output);"
+
+Previous command create one line of source code to PlanAni's source
+code part, so that it will be placed to line one, intend is one char
+and text will be "program helloWorld (input, output);". This is the
+way all lines of animation source code must be created. After source
+code creation begins animation part. It must start with command
+AN_beginAnimation. This command prepares and initialise PlanAni to
+animate. Animation part ends to command AN_endAnimation. All other
+animation commands comes between these two commands. In this point
+helloWorld looks like this:
+
+    proc helloWorld { } {
+
+      AN_createProgramLine 1 1 "program helloWorld (input, output);"
+      AN_createProgramLine 2 1 "begin"
+      AN_createProgramLine 3 4 "writeln('Hello World!');"
+      AN_createProgramLine 4 1 "end."
+
+      AN_beginAnimation
+
+      AN_endAnimation
+   }
+
+Next thing to do is to add lines which creates the animation. One can
+make event or notice to user with command AN_notice. In The
+helloWorld example words "begin" and "end." are example statements
+where AN_notice can be used. So the commands for those actions are:
+
+         __ Abbreviation of event text that will be shown to user.
+        |                        __ Coordinates of source code text to be
+        |                       |   flashed before event text message box.
+        |                       |
+    AN_notice PROGRAM_BEGINS {2 1 5}
+
+    AN_notice PROGRAM_ENDS {4 start end}
+
+First coordinate indicates line, second indicates starting character
+and third is end character to be marked and flashed.
+
+Last thing to do is add command which animate line tree. Command
+AN_writeln is used to write something to planAni's output.
+
+            __ Text which will be send to output
+           |            __ Coordinates for source code flashing
+           |           |         __ No value for this parameter.
+           |           |        |                 __ Type on notice event
+           |           |        |                |
+    AN_writeln  "Hello World!" {3 1 end} "null" "PRINT_RESULT"
+
+Final and complete version of helloWorld script looks like this:
+
+			proc helloWorld { } {
+				
+				AN_createProgramLine 1 1 "program helloWorld (input, output);"
+				AN_createProgramLine 2 1 "begin"
+				AN_createProgramLine 3 4 "writeln('Hello World!');"
+				AN_createProgramLine 4 1 "end."
+
+				AN_beginAnimation
+
+				AN_notice PROGRAM_BEGINS {2 1 5}
+				AN_writeln  "Hello World!" {3 1 end} "null" "PRINT_RESULT"
+				AN_notice PROGRAM_ENDS {4 start end}
+
+				AN_endAnimation
+
+				}
+
+The previous example was made to clarify the structure of PlanAni's
+animation script. There was no variable animation although it's the
+reason why PlanAni is made for. But after creating previous example
+it is easy to create animation where variables are included.
+
+To create a variable of some role use command AN_createVar. After
+creation of variable one can use commands to animates behaviour of
+variable. All roles have some set of command to use and these
+commands with explanation can be found from PlanAni's Programming
+interface document.
+
+The following example will be more complex and it is also included to
+PlanAni. Script will animate program, which calculates sum of tree
+values given by user. Program contains most-recent holder and
+gatherer roles.
+
+Source code of example script. Explanation of commands are after
+source code.
+
+			proc summa {} {
+
+				AN_createProgramLine 1 1 "program summa (input, output);"
+				AN_createProgramLine 2 1 "var luku, sum : integer;"
+				AN_createProgramLine 3 1 "begin"
+				AN_createProgramLine 4 5 "write('Anna ensimmäinen luku: '); readln( luku );"
+				AN_createProgramLine 5 5 "sum := luku;"
+				AN_createProgramLine 6 5 "write('Anna toinen luku: '); readln( luku );"
+				AN_createProgramLine 7 5 "sum := sum + luku;"
+				AN_createProgramLine 8 5 "write('Anna kolmas luku: '); readln( luku );"
+				AN_createProgramLine 9 5 "sum := sum + luku;"
+				AN_createProgramLine 10 5 "writeln('Lukujen summa on ', sum)"
+				AN_createProgramLine 11 1 "end."
+
+				AN_beginAnimation
+
+				set lukuId [AN_createVar luku MRH null {2 5 8} null INT]
+				set sumId [AN_createVar sum GATH null {2 11 13} null INT]
+
+				AN_notice PROGRAM_BEGINS {3 1 5}
+
+				AN_writeln  "Anna ensimmäinen luku: " {4 1 32} "null" "PRINT_REQUEST"
+				AN_set luku [AN_readData $lukuId {4 35 end} "READ_DATA"]
+				AN_setNewValue $sumId $lukuId {5 1 end}
+				AN_writeln  "Anna toinen luku: " {6 1 27} "null" "PRINT_REQUEST"
+				AN_set luku [AN_readData $lukuId {6 29 end} "READ_DATA"]
+				AN_setNewValue $sumId [expr [AN_getAttribute $sumId value] + \
+				[AN_getAttribute $lukuId value]] {7 1 end} "sum + luku"
+
+				AN_writeln  "Anna kolmas luku: " {8 1 27} "null" "PRINT_REQUEST"
+				AN_set luku [AN_readData $lukuId {8 30 end} "READ_DATA"]
+				AN_setNewValue $sumId [expr [AN_getAttribute $sumId value] + \
+				[AN_getAttribute $lukuId value]] {9 1 end} "sum + luku"
+
+				AN_writeln  "Lukujen summa on [AN_getAttribute $sumId value]" {10 1 end} \
+				{{sum 18}} PRINT_RESULT
+
+				AN_notice PROGRAM_ENDS {11 1 4}
+
+				AN_endAnimation
+			}
+
+
+Explanation of previous script:
+
+first 12 lines are familiar from helloWorld example and are not explained
+here.
+
+        Take the handle of variable. This is used to identify created variable.
+            |      Name of variable
+            |       |  Abbreviation of variable's role.
+            |       |   |  Value of variable. (null means no value)
+            |       |   |   |    Coordinates for source code flashing.
+            |       |   |   |      | Place of Variable. If null PlanAni 
+            |       |   |   |      |     |will decide the position.
+            |       |   |   |      |     |
+            |       |   |   |      |     |  Abbreviation of Variable's type.
+            |       |   |   |      |     |    |
+            |       |   |   |      |     |    |
+    set lukuId [AN_createVar luku MRH null {2 5 8} null INT]
+
+    Creates Variable named luku, whose role is most-recent holder
+    (MRH). Variable is created without initial value and PlanAni will
+    decide the position. of variable. Type of Variable is integer
+    (INT). PlanAni doesn't make any type-checking of values assigned
+    to variable. Variables handle is stored to tcl variable lukuId.
+    The handle is very important Boseki it's used to reference this
+    variable.
+
+			set luku [AN_readData $lukuId {4 35 end} "READ_DATA"]
+
+    Requests user input and assigns value to lukuId. In the PlanAni
+    GUI there is plate which describe input channel. READ_DATA is
+    Abbreviation of notice text.
+
+    AN_setNewValue $sumId [expr [AN_getAttribute $sumId value] +
+    [AN_getAttribute $lukuId value]] {9 1 end} "sum + luku"
+
+    Sets new value to variable sum. New value is sum of values of
+    variable luku and sum. "sum + luku" means that this text with
+    array is show before value is assigned. This text is used to
+    clarify how the new value is formed.
+
+    AN_writeln  "Lukujen summa on [AN_getAttribute $sumId value]" \
+	{10 1 end} {{sum 18}} PRINT_RESULT
+    
+    An_writeln command writes text to PlanAni's output field. New
+    line character will be written after text. Second last parameter
+    is list of position-text pairs. these pairs are crates arrow with
+    given text to the position indicated by given position. In this
+    case text "sum" will be created and arrow pointing from text to
+    18th character of the written output text.
+
+
+More information about commands can be found from Api file. Included
+examples are also good reference to see how operations work and how
+those operations are used to animate novice level programs.
+
+List of AN programmin interface functions:
+
+
+		AN_beginAnimation
+		AN_change
+		AN_compare
+		AN_compareElements
+		AN_createProgramLine
+		AN_createVar
+		AN_delay
+		AN_deleteAttributes
+		AN_destroyVariable
+		AN_endAnimation
+		AN_follow
+		AN_getAll
+		AN_getAttribute
+		AN_getElementAttribute
+		AN_getElementValue
+		AN_notice
+		AN_properChange
+		AN_reStart
+		AN_readData
+		AN_setAttribute
+		AN_setCorrValue
+		AN_setDirection
+		AN_setExpression
+		AN_setLim
+		AN_setNewElementValue
+		AN_setNewValue
+		AN_setState
+		AN_setVariable
+		AN_sporadicChange
+		AN_step
+		AN_swap
+		AN_write
+		AN_writeln

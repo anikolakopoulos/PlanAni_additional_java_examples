@@ -1,0 +1,38 @@
+.TH AN_step n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH AN_step
+AN_step \- Steps to the next value debending on variable's previous value
+and expression attribute.
+
+.SH SYNOPSIS
+\fBAN_step \fIvarId coords\fR
+.SH DESCRIPTION
+.PP
+Flashes the source code at the position of the \fIcoords\fR, after that shows
+messagebox and then steps to next value. Finally, if the stepmode is
+on waits until step button is pressed. Variables value attribute is
+updated before returning.
+
+.SH PARAMETERS
+
+.IP "\fIvarId\fR" 
+A Handle to the variable.
+
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.  
+
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+AN_step $iId {10 5 5}
+.SH SEE ALSO
+AN_setExpression AN_setDirection AN_setLim
+.SH BUGS
+Does not check the role of the variable identified by handle
+\fIvarId\fR
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

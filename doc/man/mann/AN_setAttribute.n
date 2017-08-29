@@ -1,0 +1,33 @@
+.TH AN_setAttribute n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setAttribute \- Sets value to variable's certain attribute.
+
+.SH SYNOPSIS
+\fB AN_setAttribute \fIvarId attribute value\fR
+
+.SH DESCRIPTION
+.PP
+Set \fIvalue\fR to variable's, \fIvarId\fR, certain \fIattribute\fR. 
+.IP "\fI \fR"
+.SH PARAMETERS
+
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIattribute\fR"
+Name of the attribute. Some attributes are role spesific.
+.IP "\fIvalue\fR"
+New value of the attribute.
+
+.SH RETURN VALUE
+None.
+
+.SH EXAMPLES
+Set value "tmp" to attribute called "name".
+
+AN_setAttribute $tmpId name tmp
+.SH SEE ALSO
+AN_getAttribute AN_getAll
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

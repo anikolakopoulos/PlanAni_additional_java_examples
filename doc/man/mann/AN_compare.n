@@ -1,0 +1,50 @@
+.TH AN_compare n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_compare \- Animate comparison of the variable.
+
+.SH SYNOPSIS
+\fBAN_compare \fIcoords ?type? ?args?\fR
+.SH DESCRIPTION
+.PP
+\fIAN_compare\fR animates basic condition clauses. First
+notices the \fItype\fR of the statement and after that animates comparison and
+finally the result of the comparison is noticed.
+.SH PARAMETERS
+
+.IP "\fIcoords\fR"
+
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.  
+
+.IP "\fItype\fR"
+Type of the statement where comparison occurres. Only four type are
+supported: IF, WHILE, REPEAT, FOr and IF_SKIP_ELSE. IF_SKPI_ELSE means that
+if-statement does not have the else part.  
+
+.IP "\fIargs\fR"
+A list containing comparison tokens. Tokens are: value, || , && or
+a handle to a variable.
+.SH RETURN VALUE
+A result of the comparison. 0 if evaluation of parameter args is false
+otherwise greater than 0.
+
+.SH EXAMPLE
+
+AN_compare {7 1 5} REPEAT "$countId > 0 {7 7 17}"
+
+AN_compare {11 1 5} WHILE $eka $toka $kolmas
+
+AN_compare {19 1 5} WHILE "$inOrderId {19 7 17} null 1"
+
+AN_compare null FOR "$iId {21 5 20}"
+
+AN_compare {31 1 2} IF "$nId {31 4 end}"
+
+.SH SEE ALSO
+AN_compareElements
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

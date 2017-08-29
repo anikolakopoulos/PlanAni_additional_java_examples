@@ -1,0 +1,28 @@
+.TH AN_sporadicChange n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_sporadicChange \- Change variable's role sporadicly.
+
+.SH SYNOPSIS
+\fBAN_sporadicChange \fIvarId newRole\fR
+
+.SH DESCRIPTION
+.PP
+Change variables \fIvarID\fR role to \fInewRole\fR and re-initialize
+all attributes.  
+.SH PARAMETERS
+.IP "\fIvarID\fR"
+A handle to the variable.
+.IP "\fInewRole\fR"
+Abbreviation of the variable's new role. Possible values are: MRH,
+FIXED, FOLL, CONS, GATH, MWH, OWF, ORGA, STEP, TEMP, OTHE. 
+
+.SH RETURN VALUE
+None.
+.SH EXAMPLE
+AN_sporadicChange $tmpId GATH
+.SH SEE ALSO
+AN_properChange
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

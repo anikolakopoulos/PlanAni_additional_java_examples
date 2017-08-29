@@ -1,0 +1,39 @@
+.TH AN_write n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_write \- Writes a string to PlanAni's output area without line
+break.
+
+.SH SYNOPSIS
+\fBAN_write \fItext ?coords? ?notice?\fR
+
+.SH DESCRIPTION
+.PP
+Writes a string \fItext\fR to PlanAni's output area without line
+break. If
+parameter \fIcoords\fR is given or different than "null" source code
+at the position of \fIcoords\fR is flashed. If  \fInotice\fR is
+specified messagebox with a given action message is shown after
+flashing. 
+
+.SH PARAMETERS
+.IP "\fItext\fR"
+A string that will be written.
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+
+.IP \fInotice\fR
+Action message abbreviation.
+.SH RETURN VALUE
+A NULL is returned if an error occurs.  Otherwise the return value is
+a descriptor referencing the variable.
+.SH EXAMPLES
+AN_write " palindromi." { 23 1 end } PRINT_RESULT
+.SH SEE ALSO
+AN_writeln
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

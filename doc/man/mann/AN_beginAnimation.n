@@ -1,0 +1,21 @@
+.TH AN_beginAnimation n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_beginAnimation \- Waits until run button is pressed.
+
+.SH SYNOPSIS
+\fBAN_beginAnimation
+.SH DESCRIPTION
+.PP
+Waits until run button is pressed. This procedure should be called
+after creating the source code.
+.SH RETURN VALUE
+None.
+.SH EXAMPLE
+AN_beginAnimation
+.SH SEE ALSO
+AN_endAnimation AN_createProgramLine
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

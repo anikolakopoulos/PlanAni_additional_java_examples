@@ -1,0 +1,22 @@
+.TH AN_destroyVariable n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_destroyVariable \- Destroy a variable
+
+.SH SYNOPSIS
+\fBAN_destroyVariable \fIvarId\fR
+.SH DESCRIPTION
+.PP
+Delete variable referenced by \fIvarId\fR and unset all variable's data
+structures.
+.SH PARAMETERS
+.IP "\fIvarId\fR" 
+A Handle to the variable.
+.SH RETURN VALUE
+None.
+.SH SEE ALSO
+AN_createVar
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

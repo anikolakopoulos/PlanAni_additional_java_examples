@@ -1,0 +1,35 @@
+.TH AN_properChange n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_properChange \- Change variable's role properly.
+
+.SH SYNOPSIS
+\fBAN_properChange \fIvarId newRole\fR
+
+.SH DESCRIPTION
+.PP
+Change variables \fIvarID\fR role to \fInewRole\fR, so that value of
+the old role is new value of the new role. Attributes, except value, 
+are re-initialized. 
+.SH PARAMETERS
+.IP "\fIvarID\fR"
+A handle to the variable.
+.IP "\fInewRole\fR"
+Abbreviation of the variable's new role. Possible values are: MRH,
+FIXED, FOLL, CONS, GATH, MWH, OWF, ORGA, STEP, TEMP, OTHE. 
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+Change variables \fI$tmpId\fR role to temporary.
+
+	AN_properChange $tmpId STEP
+
+.SH SEE ALSO
+AN_sporadicChange
+
+.SH BUGS
+Value of the \fInewRole\fR argument should be checked better. 
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

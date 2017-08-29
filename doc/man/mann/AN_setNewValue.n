@@ -1,0 +1,41 @@
+.TH AN_setNewValue n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setNewValue \- Sets new value to variable.
+
+.SH SYNOPSIS
+\fBAN_setNewValue \fIvarId value ?mark? ?txt? ?hs?\fR
+.SH DESCRIPTION
+Sets new \fIvalue\fR to the variable referenced by \fIvarId\fR. Source
+code can be flashed at the position \fImark\fR.  
+.SH PARAMETERS
+.IP "\fIvarId\fR" 
+A handle to the variable
+.IP "\fIvalue\fR" 
+A new value of the variable.
+.IP "\fImark\fR" 
+
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second
+element is index of start character and the last element is index of
+end character.
+
+.IP "\fItxt\fR" 
+
+A text that is used when variables value is updated and new value
+depends on math expression. shows expression text and arrow pointing
+to \fIhs\fR.
+
+.IP "\fIhs\fR" 
+A hotspot where new value will be stored. Usually not needed.
+
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+AN_setNewValue $iD 10 {5 1 end} "i=5+i"
+
+.SH SEE ALSO
+AN_setNewElementValue
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

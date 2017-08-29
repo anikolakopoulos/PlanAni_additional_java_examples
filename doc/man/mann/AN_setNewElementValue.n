@@ -1,0 +1,45 @@
+.TH AN_setNewElementValue n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setNewElementValue \- Set new value to the element of the array variable.
+
+.SH SYNOPSIS
+\fBAN_setNewElementValue \fIvarId value index ?coords? ?txt? ?hs?\fR
+.SH DESCRIPTION
+Sets new \fIvalue\fR to the element of the array variable referenced by \fIvarId\fR. 
+.PP
+.SH PARAMETERS
+
+.IP "\fIvarId\fR" 
+A handle to the variable.
+
+.IP "\fIvalue\fR"
+A new value of the variable.
+
+.IP "\fIindex\fR" 
+Index of the element.
+
+.IP "\fIcoords\fR" 
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second
+element is index of start character and the last element is index of
+end character.
+
+.IP "\fItxt\fR" 
+A text that is used when variables value is updated and new value
+depends on math expression. shows expression text and arrow pointing
+to \fIhs\fR.
+
+.IP "\fIhs\fR" 
+A hotspot where new value will be placed. Usually not needed.
+
+
+.SH RETURN VALUE
+.NONE
+.SH EXAMPLES
+AN_setNewElementValue $aId $tempId [AN_getAttribute $nId value]
+.SH SEE ALSO
+AN_setNewValue
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

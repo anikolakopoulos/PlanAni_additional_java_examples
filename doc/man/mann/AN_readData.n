@@ -1,0 +1,34 @@
+.TH AN_readData n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_readData \- Read value from PlanAni's input field and animate value assignment to variable.
+
+.SH SYNOPSIS
+\fBAN_readData \fIvarId coords ?notice? ?index?\fR
+.SH DESCRIPTION
+.PP
+Reads data from PlanAni's input area and animates value to the
+\fIvarId\fR. 
+
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+.IP "\fInotice\fR"
+A Key to language table. Function calls notice with this value if it
+isnot "null".
+.IP "\fIindex\fR"
+AN index of the array element where the value is assigned.
+.SH RETURN VALUE
+the return value is a value of given input. 
+.SH EXAMPLES
+AN_readData $lukuId {4 35 end} "READ_DATA"
+.SH SEE ALSO
+AN_write AN_writeln
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

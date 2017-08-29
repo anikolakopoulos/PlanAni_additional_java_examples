@@ -1,0 +1,27 @@
+.TH AN_getElementValue n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_getElementValue \- Returns a value of the element.
+
+.SH SYNOPSIS
+\fBAN_createVar \fIvarId element\fR
+.SH DESCRIPTION
+.PP
+Returns a value of the element which index is \fIelement\fR.
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIelement\fR"
+Index of the element. First index of the array is 1.
+.SH RETURN VALUE
+
+an empty string is returned if an error occurs.  Otherwise the return value is
+a value of the element.
+
+.SH KEYWORDS
+AN_setElementValue
+.BUGS 
+Error can not be detected if value of the element is an empty string.
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

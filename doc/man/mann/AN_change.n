@@ -1,0 +1,38 @@
+.TH AN_change n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_change \- Change state of the variable, whose role is one-way-flag.
+
+.SH SYNOPSIS
+\fBAN_change \fIvarId ?value? ?coords? ?doThis?\fR
+.SH DESCRIPTION
+.PP
+Change state of the variable referenced by \fIvarId\fR, whose role is
+one-way-flag. Variable gets new value either from parameter \fIvalue\fR
+or evaluating argument \fIdoThis\fR. 
+.SH PARAMETERS
+
+.IP "\fIvarId\fR"
+A Handle to the variable.
+
+.IP "\fIvalue\fR"
+A New value of the variable. Either "true" or "false". 
+
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+.IP "\fIdoThis\fR"
+\fIdoThis\fR is expression which is evaluated. Return value of
+evaluation must be 1 or 0. Expression is passed to tcl eval command.
+The result of evaluation is the new value of the variable where 1 means
+true and 0 means false.
+
+.SH RETURN VALUE
+None.
+.SH KEYWORDS
+AN_setDirection
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

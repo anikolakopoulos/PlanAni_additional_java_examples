@@ -1,0 +1,39 @@
+.TH AN_setCorrValue n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setCorrValue \- Correct value of variable, whose role is constant.
+
+.SH SYNOPSIS
+\fBAN_setCorrValue \fIvarId newValue ?mark? ?txt?\fR
+.SH DESCRIPTION
+.PP
+Correct value of the variable \fIvarId\fR, whose role is constant. New
+value will be \fInewValue\fR. Marks and flashes source code at the
+podition \fImark\fR. If \fItxt\fR is specified then arrow and text
+vill be shown above the variable picture. \fItxt\fR clarifies how the
+new value is calculated.
+
+.SH PARAMETERS
+
+.IP "\fIvarID\fR"
+A handle to the variable.
+.IP "\fInewValue\fR"
+New value of the variable.
+.IP "\fImark\fR"
+A list containing position of source code, which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.  
+
+.IP "\fItxt\fR"
+Text that shows above variable with arrow pointing to value. Indicates
+how corrected value is calculated. 
+
+.SH RETURN VALUE
+None.
+.SH EXAMPLE
+AN_setCorrValue $numberId 5 {7 start end} "abs(number)"
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

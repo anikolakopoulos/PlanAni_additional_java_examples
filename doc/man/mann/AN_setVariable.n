@@ -1,0 +1,24 @@
+.TH AN_setVariable n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setVariable \- Set variable attribute.
+
+.SH SYNOPSIS
+\fBAN_createVar \fIvarId varToFollow\fR
+.SH DESCRIPTION
+.PP
+For a role follower argument \fIvarToFollow\fR is a handle to the
+variable, which vill be followed and for the role temporary argument 
+\fIvarToFollow\fR is a handle to the variable, which value is stored
+to \fIvarId\fR for a short time.
+
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable
+.IP "\fIvarToFollow\fR"
+A handle to the variable, which is used by variable \fIvarId\fR.
+.SH RETURN VALUE
+None.
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

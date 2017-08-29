@@ -1,0 +1,23 @@
+.TH AN_getAttribute n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_getAttribute \- returns one attribute of the variable.
+
+.SH SYNOPSIS
+\fBAN_createVar \fIvarId attribute\fR
+.SH DESCRIPTION
+.PP
+Returns a value of the \fIvarId\fR's \Ifattribute\fR.
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIattribute\fR"
+Name of the attribute. Some of the attributes are role specific.  
+.SH RETURN VALUE
+A empty string is returned if an error occurs.  Otherwise the return value is
+a value of the attribute.
+.SH KEYWORDS
+Roles
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

@@ -1,0 +1,46 @@
+.TH AN_compareElements n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_compareElements \- Animate comparison of two array elements.
+.SH SYNOPSIS
+\fBAN_compareElements \fIvarId index index2 txt txt2 coords ?expr?
+?notice?\fR
+.SH DESCRIPTION
+.PP
+Compares two elements of the array. Elements are at the position \fIindex\fR
+and \fIindex2\fR. 
+\fI\fR 
+
+.SH PARAMETERS 
+
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIindex\fR"
+Index of the first element, which will be compared.
+.IP "\fIindex2\fR"
+Index of the second element, which will be compared.
+.IP "\fItxt\fR"
+Text under the first element. For example "a[i]".
+.IP "\fItxt2\fR"
+Text under the second element. For example "a[i+1]".
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character. 
+.IP "\fIexpr\fR"
+A sign between comaprison. (==,<=,=>,!=,&&,||).
+.IP "\fInotice\fR"
+This indicates which will be the result action notice (THEN,
+IF_FALSE).
+.SH RETURN VALUE
+1 is returned if comparison is true.  Otherwise the return value is
+0.
+.SH EXAMPLES
+AN_compareElements $aId $index1 $index2 "a\[i\]" \
+"a\[i+1\]" {22 4 17} ">" THEN]
+.SH SEE ALSO
+AN_compare
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

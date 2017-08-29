@@ -1,0 +1,36 @@
+.TH AN_swap n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_swap \- Swap two elements of an array variable which role is
+organizer.
+
+.SH SYNOPSIS
+\fBAN_swap \fIvarId from to tempVarId args\fR
+.SH DESCRIPTION
+.PP
+Swap two elements of an array variable which role is organizer. Uses 
+temporary variable to hold value for a short time. If the role of variable
+referenced by \fItempVarId\fR is not temporary the role is changed
+sporadicly to temporary. Values are animated in following order:
+\fIfrom\fR --> \fItempVarId\fR, \fIto\fR --> \fIfrom\fR,
+\fItempVarId\fR --> \fIto\fR. 
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIfrom\fR"
+Index of the first element, which will be swapped.
+.IP "\fIto\fR"
+Index of the second element, which will be swapped.
+.IP "\fIargs\fR"
+Alist which first element is a handele to the temporary variable and
+rest elements are coordinates of the source code, which will be
+flashed. 
+.SH RETURN VALUE
+None.
+.SH EXAMBLE
+AN_swap $aId [AN_getAttribute $iId value] [expr [AN_getAttribute $iId value] +1] $tempId {23 1 end} {24 1 end} {25 1 end}
+.SH KEYWORDS
+AN_compareElements
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

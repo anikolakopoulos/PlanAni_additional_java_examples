@@ -1,0 +1,204 @@
+#
+#Planani hotspots list file
+#Ville Rapa 10.6 2003 
+# '#' character at the beginning of the line means comment
+# The sort name of the role closed with <> starts section which
+# holds roles picture information.
+# path starts from planani's pic_path variable.
+#
+#<ROLE> 
+#	path
+#	name
+#	.
+#	.
+#	.
+#</ROLE>
+
+<FIXED-VALUE>
+1 {10 11}
+2 {20 21}
+3 {30 31}
+4 {40 41}
+5 {50 51}
+6 {60 61}
+7 {70 71}
+8 {80 81}
+9 {90 91}
+10 {100 101}
+11 {110 111}
+</FIXED-VALUE>
+
+<ORGANIZER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</ORGANIZER>
+
+<STEPPER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</STEPPER>
+
+<MOST-RECENT_HOLDER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</MOST-RECENT_HOLDER>
+
+<GATHERER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</GATHERER>
+
+<MOST-WANTED_HOLDER>
+1 {} {}
+2 {} {}
+</MOST-WANTED_HOLDER>
+
+<ONE-WAY_FLAG_broken>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</ONE-WAY_FLAG_broken>
+
+<ONE-WAY_FLAG_lamp>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</ONE-WAY_FLAG_lamp>
+
+<FOLLOWER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</FOLLOWER>
+
+<TEMPORARY_off>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</TEMPORARY_off>
+
+<TEMPORARY_on>
+1 {} {}
+2 {} {}
+</TEMPORARY_on>
+
+<OTHER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</OTHER>
+
+<CONSTANT>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+</CONSTANT>
+
+<MOST-RECENT_HOLDER_to_STEPPER>
+1 {} {}
+2 {} {}
+3 {} {}
+4 {} {}
+5 {} {}
+6 {} {}
+7 {} {}
+8 {} {}
+9 {} {}
+10 {} {}
+11 {} {}
+12 {} {}
+13 {} {}
+14 {} {}
+15 {} {}
+16 {} {}
+17 {} {}
+18 {} {}
+19 {} {}
+20 {} {}
+21 {} {}
+22 {} {}
+</MOST-RECENT_HOLDER_to_STEPPER>

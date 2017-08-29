@@ -1,0 +1,27 @@
+PlanAni Program Animator
+
+(c) 2003 Department of Computer Science, University of Joensuu, Finland
+
+27.11.2003
+
+PlanAni is a program animator based on the idea of roles of
+variables. A role describes the dynamic character of a variable
+embodied by the sequence of its successive values as related to other
+variables and external events. In PlanAni, variables are represented
+by role images, e.g., each fixed value is represented by a stone
+giving the impression of something that is hard to change. Moreover,
+operations like assignment and comparisons have role-specific
+animations.
+
+PlanAni assumes that you have Tcl/Tk installed. To run PlanAni in
+UNIX/Linux, give the command
+
+        > planani
+
+In windows, start Tcl/Tk, load the file start.tcl, and start it.
+
+The file help.txt contains a short user guide for end users of
+PlanAni (i.e., students), the file userGuide contains instructions
+for authoring new animations, the file API describes how animation
+commands work, and the directory man/mann contains manual pages for
+API commands.

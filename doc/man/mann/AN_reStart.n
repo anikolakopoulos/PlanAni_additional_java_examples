@@ -1,0 +1,25 @@
+.TH AN_reStart n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_reStart \- Restart variables episode.
+
+.SH SYNOPSIS
+\fBAN_reStart \fIvarId\fR
+.SH DESCRIPTION
+.PP
+Restart variables \fIvarId\fR episode. Unset all variables attributes. 
+.PARAMETERS
+.IP "\fIvarId\fR"
+.SH RETURN VALUE
+None.
+.EXAMPLES
+
+.SH SEE ALSO
+AN_destroyVariable AN_createVar
+.SH BUGS 
+This command is not implemeted as it should be, so do not use
+this.
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

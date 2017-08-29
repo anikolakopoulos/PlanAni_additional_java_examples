@@ -1,0 +1,35 @@
+.TH AN_follow n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_follow \- Follows a given variable
+
+.SH SYNOPSIS
+\fBAN_follow \fIvarId coords\fR
+.SH DESCRIPTION
+.PP
+\fIVarId\fR gets a new value by following another variable, whose handle is
+stored to attribute called "variable". Value will be animated to the
+variable.
+
+.SH PARAMETERS
+
+.IP "\fIvarId\fR"
+A Handle to the variable.
+
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+
+.SH RETURN VALUE
+None.			
+.SH KEYWORDS
+AN_setAttribute.
+.SH BUGS
+A functionality of the variable, which follows element of the array,
+is not yet implemented.
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

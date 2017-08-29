@@ -1,0 +1,28 @@
+.TH AN_setDirection n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setDirection \- Set direction of the variable, whose role is
+stepper.
+
+.SH SYNOPSIS
+\fBAN_createVar \fvarId dir\fR
+.SH DESCRIPTION
+.PP 
+Set direction attribute of the variable /fIvarId/fR, whose role is
+stepper. Valid directions are: left or rigth. Visible effect is that
+array above the role image is set to point new direction. 
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIdir\fR"
+New direction.
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+AN_setDirection $i left
+AN_setDirection $i right
+.SH SEE ALSO
+AN_getAttribute
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

@@ -1,0 +1,44 @@
+.TH AN_writeln n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_writeln \- Writes line to PlanAni's output. Puts line break to the
+end of the line.
+
+.SH SYNOPSIS
+\fBAN_writeln \fItext ?coords? ?extra? ?notice? ?newline?\fR
+.SH DESCRIPTION
+.PP
+Writes \fItext\fR to the PlanAni's output and puts line break to the
+end of the line. \fIcoords\fR specifies area of the source code which
+will be flashed. the argument \fIextra\fR can be used to clarify
+output text with arrow and text. If \fInewline\fR is different than
+1 the line brake is not written. Default value to the \fInewline\fR
+is 1.
+.SH PARAMETERS
+.IP "\fItext\fR"
+A text that will be writen to the PlanAni's output.
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+.IP "\fIextra\fR"
+A list containing character position at the \fItext\fR and text.
+Creates arrow and text to output which clarifies the written text.
+Array points to the given character position {5 a[i]}.
+.IP "\fInotice\fR"
+A text in the opened dialog box.
+.IP "\fInewline\fR"
+Flag that indicates is the line break be written to the end of the line or not.
+If \fInewline\fR is 1 then line break will be writen otherwise not.
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+AN_writeln "Hello world!"
+
+AN_writeln "Hello world again!" no {7 "Ville says:"}
+.SH SEE ALSO
+AN_write
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

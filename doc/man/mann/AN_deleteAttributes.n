@@ -1,0 +1,20 @@
+.TH AN_deleteAttributes n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_deleteAttributes \- Delete all attributes of the variable.
+
+.SH SYNOPSIS
+\fBAN_deleteAttributes \fIvarId\fR
+.SH DESCRIPTION
+.PP
+Delete all attributes referenced by argument \fIvarId\fR. 
+.SH PARAMETERS 
+.IP "\fIvarId\fR"
+A Handle to variable.
+.SH RETURN VALUE
+None.
+.SH SEE ALSO
+AN_setAttribute AN_destroyVariable AN_getAll  AN_getAttribute.
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

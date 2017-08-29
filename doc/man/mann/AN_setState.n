@@ -1,0 +1,36 @@
+.TH AN_setState n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setState \- Switch state of the variable, whose role is temporary
+
+.SH SYNOPSIS
+\fBAN_setState \fIvarId ?state? ?coords? ?index?\fR
+.SH DESCRIPTION
+.PP
+Switch state of the \fIvarId\fR variable, whose role is temporary.
+\fIstate\fR must be either ON or OFF. New value is animated from
+variable, which handle is stored to attribute "variable". 	
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIstate\fR"
+New state of the variable. Value must be either ON or OFF.
+.IP "\fIcoords\fR"
+A list containing position of source code which will be marked and
+flashed. The first Element of the list is line number, the second element is
+index of start character and the last element is index of end
+character.
+
+.IP "\fIindex\fR"
+Index of an array element, if attribute "variable" points to array
+variable. 
+
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+AN_setState $tmp ON {1 1 end} 
+.SH SEE ALSO
+AN_setVariable
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

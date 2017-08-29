@@ -1,0 +1,104 @@
+
+PlanAni Program Animator
+
+
+Idea: Jorma Sajaniemi
+Programmers: Mikko Korhonen, Ville Rapa
+Graphics: Anu Nevalainen, Aki Rissanen
+
+
+Table of contents
+
+1 What is PlanAni?
+2 PlanAni window
+  2.1 Menus
+    2.1.1 File menu
+    2.1.2 Settings menu
+    2.1.3 Controls menu
+    2.1.4 Help Menu
+  2.2 Control buttons
+    2.2.1 Run button
+    2.2.2 Stop button
+    2.2.3 Step button
+    2.2.4 Reset button
+    2.2.5 Speed button
+3 keyboard controls
+
+1 What is PlanAni?
+
+PlanAni is a program animator based on the idea of roles of variables. A role describes the dynamic character of a variable embodied by the sequence of its successive values as related to other variables and external events. The roles supported by PlanAni are the following:
+
+* Fixed value: A variable whose value does not change after initialization.
+* Stepper: A variable stepping through a systematic, predictable succession of values.
+* Follower: A variable that gets its new value always from the old value of some other variable.
+* Most-recent holder: A variable holding the latest value encountered in going through a succession of values, or simply the latest value obtained as input.
+* Most-wanted holder: A variable holding the best or otherwise most appropriate value encountered so far.
+* Gatherer: A variable accumulating the effect of individual values.
+* One-way flag: A two-valued variable that cannot get its initial value once its value has been changed.
+* Temporary: A variable holding some value for a very short time only.
+* Organizer: An array used for rearranging its elements.
+
+In PlanAni, variables are represented by role images, e.g., each fixed value is represented by a stone giving the impression of something that is hard to change. Moreover, operations like assignment and comparisons have role-specific animations.
+
+This guide is a a short user manual for running animations; a separate guide describes how to create animations for new programs.
+
+2 PlanAni window
+
+2.1 Menus
+
+There are 3 menus in PlanAni's main window: File, Settings and Controls.
+
+2.1.1 File menu
+
+File menu has one sub-menu and an exit option which quits program. Sub-menu is called Examples and there you can choose current example program.
+
+2.1.2 Settings menu
+
+Settings menu has two sub-menus, player and speed options. First sub-menu is for font selection. There are 3 font families, size and style (bold or normal). Second sub-menu is for language selection. Implemented languages are English and Finnish. Player option is not implemented yet and speed option opens new dialog window where you can choose animation speed. 1 is the slowest and 5 is the fastest. Default speed is 3.
+
+2.1.3 Controls menu
+
+In Controls menu there are four options which control program state: Run, stop, reset and step. These are same as buttons in bottom right corner of the main window and are explained in chapters 2.2.1-2.2.5. 
+
+2.1.4 Help Menu
+
+This document.
+
+2.2 Control buttons
+
+There are 5 buttons on bottom right corner which control animation. 
+
+2.2.1 Run button
+Run button starts the animation of the currently selected program. When animation is running run button is disabled and will be enabled when animation is in stopped state. Animation can be stopped by using stop or reset functionality. Run button is disabled when animation is on run state.
+
+2.2.2 Stop button
+
+Stops the animation of the program. The stop button is disabled when the program is not in animation state. When animation is stopped you can continue with step or run buttons. 
+
+2.2.3 Step button
+
+When animation is at start or stopped, you can use step button to run animation step by step. Animation stops after every action and waits until run is pressed or step is pressed again. Step button is disabled when animation is on run state. 
+
+2.2.4 Reset button
+
+Reset button resets animation to start state. 
+
+2.2.5 Speed button
+
+Speed button opens scale dialog box where you can select the animation speed. 1 is the slowest and 5 is the fastest. Default speed is 3.
+
+3 keyboard controls
+	
+	Function      | Key(s)
+	---------------------------
+	              |
+	exit          | Ctrl-x 
+	help          | h, o
+	reset         | e, l
+	Run           | r
+	speed         | d, s
+	step          | t, a
+	stop          | s, p
+	incr. speed   | +, right arrow (in the speed dialog)
+	decs. speed   | -, left arrow (in the speed dialog)
+	

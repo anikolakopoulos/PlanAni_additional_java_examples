@@ -1,0 +1,26 @@
+.TH AN_getElementAttribute n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_getElementAttribute \- Returns length of the array.
+
+.SH SYNOPSIS
+\fBAN_getElentAttribute \fIname role type coords value length\fR
+.SH DESCRIPTION
+.PP
+Returns length of the variable \fIvarId\fR.
+.SH PARAMETERS
+.IP \fIvarId\fR
+a Handle to the variable.
+.SH RETURN VALUE
+.None
+A NULL is returned if an error occurs.  Otherwise the return value is
+a value of the length attribute.
+.EXAMPLE
+
+.SH SEE ALSO
+AN_getAll AN_setAttribute.
+.BUGS
+This feature is not compleatly implemented. 
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

@@ -1,0 +1,20 @@
+.TH AN_endAnimation n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_endAnimation \- Ends animation.
+
+.SH SYNOPSIS
+\fBAN_endAnimation
+.SH DESCRIPTION
+.PP
+Ends animation and calls \fIAN_reset\fR to start animation execution from
+beginning.	
+.SH RETURN VALUE
+None.
+.SH EXAMPLES
+AN_endAnimation
+.SH SEE ALSO
+AN_beginAnimation AN_reset
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

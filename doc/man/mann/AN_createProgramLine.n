@@ -1,0 +1,30 @@
+.TH AN_createProgramLine n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_createProgramLine \- Creates a source code line.
+
+.SH SYNOPSIS
+\fBAN_createProgramLine \fIrow col text\fR
+
+.SH DESCRIPTION
+.PP
+Creates a program line \fItext\fR to PlanAni's source code part.
+\fIText\fR starts from
+point (\fIrow\fR \fIcol\fR), which units are characters. upper left
+corner is point (1,1). and one line down is point (1,0) and so on. 
+
+.SH PARAMETERS
+.IP "\fIrow\fR"
+A row where the \fIText\fR will be created.
+.IP "\fIcol\fR"
+A starting column of the \fIText\fR 
+.IP "\fItext\fR"
+The Program line text that will be created.
+
+.SH RETURN VALUE
+None.
+.SH SEE ALSO
+AN_startAnimation AN_endAnimation.
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

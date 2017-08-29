@@ -1,0 +1,29 @@
+.TH AN_setExpression n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setExpression \- Creates a variable
+
+.SH SYNOPSIS
+\fB AN_setExpression \fIvarId exp\fR
+.SH DESCRIPTION
+.PP
+Set value of \fIexp\fR to attribute expression. Expression attribute
+is used for calculating valid values of the variable, whose role is
+stepper.
+
+
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A handle to the variable.
+.IP "\fIexp\fR" 
+New value to the expression attribute.
+.SH RETURN VALUE
+A NULL is returned if an error occurs.  Otherwise the return value is
+a descriptor referencing the variable.
+
+.SH SEE ALSO
+AN_setAttribute
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

@@ -1,0 +1,38 @@
+.TH AN_setLim n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_setLim \- Set values to variable's attributes, whose role is stepper.
+.SH SYNOPSIS
+\fBAN_setLim \fIvarId cmp ?limExp? ?lim?\fR
+.SH DESCRIPTION
+.PP
+Sets stepper's attribute "comparison" and also optionally attributes
+"limitExpression" and "limitValue". Stepper's attribute comparison is
+a statement which indicates allowed values of the variable \fIvarId\fR.
+LimitExpression is a statement which expresses limit value of
+the variable \fIvarId\fR. If LimitExpression is not spesified attribute limitValue is used as a variable's limit value.
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A Handle to the variable.
+.IP "\fIcmp\fR"
+Statement of the attribute "comparison". To form comparison statement
+use "@" char as a variable, for example @>1 means that comparison
+return true if variables's value is bigger than zero. "@" character is
+replaced with variable's value and then statement is passed to \fIexpr\fR
+command.
+.IP "\fIlimExp\fR"
+Statement of the attribute "limitExpression". Use "null" value if this
+parameter is not given and \fIlim\fR is.
+.IP "\fIlim\fR"
+Value of the attribute "limitValue".
+.SH RETURN VALUE
+A NULL is returned if an error occurs.  Otherwise the return value is
+a descriptor referencing the variable.
+.SH EXAMPLES
+AN_setLim $iId "@<=5" "n-1" 5 
+.SH SEE ALSO
+AN_setExpression AN_setDirection AN_setAttribute
+.SH BUGS
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

@@ -1,0 +1,21 @@
+.TH AN_delay n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_delay \- Delay execution depending on PlanAni's speed value.
+
+.SH SYNOPSIS
+\fBAN_delay
+.SH DESCRIPTION
+.PP
+
+Delay execution for a seconds which is got from function gb_get_speed.
+
+.SH RETURN VALUE
+None.
+.SH EXAMPLE
+AN_delay
+.SH SEE ALSO
+
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.

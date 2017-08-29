@@ -1,0 +1,29 @@
+.TH getAll n "" PlanAni "AN Built-In Commands"
+'\" Note:  do not modify the .SH NAME line immediately below!
+.SH NAME
+AN_getAll \- Returns all attributes of the variable
+
+.SH SYNOPSIS
+\fBAN_getAll \fIvarId\fR
+
+.SH DESCRIPTION
+.PP
+Return all atrribute names and values referenced to \fIvarId\fR.
+Different roles have a different amount of attributes. all roles and
+attributes are listed in the PlanAni's man page 
+
+.SH PARAMETERS
+.IP "\fIvarId\fR"
+A Handle to the variable.
+
+.SH RETURN VALUE
+A -1 is returned if an error occurs.  Otherwise the return value is
+a list containing all pairs of attribute name and attribute value. 
+
+.SH EXAMPLE
+AN_getAll $temp
+.SH SEE ALSO
+AN_getAttribute
+.SH COPYRIGHT
+Copyright (c) 2003 University of Joensuu, Department of Computer
+Science.
